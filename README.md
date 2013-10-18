@@ -1,4 +1,4 @@
-proposal: accessible math rendering in a JavaScript environment
+Accessible math rendering in a JavaScript environment
 ==========================
 
 A proposal.
