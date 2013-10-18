@@ -1,4 +1,4 @@
-proposal--server-side-math
+Accessible math rendering in a JavaScript environment
 ==========================
 
-proposal: accessible math rendering in a JavaScript environment
+A proposal.
