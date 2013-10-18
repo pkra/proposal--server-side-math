@@ -10,10 +10,7 @@ We propose to create a JavaScript program that will process HTML5 documents, rep
 
 This tool will be designed as a server side production tool. A particular focus will be to help with the transition of ebooks to epub3. We will leverage existing open source technology, in particular node.js, MathJax and ChromeVox.
 
-
 MathJax has provided cross-browser support for MathML for over 5 years. ChromeVox allows voicing and exploration of MathML.
-
-The program will combine MathJax and ChromeVox technology in a server side setting (as opposed to a browser / DOM), e.g., node.js or rhino, and render MathML into static SVGs (via MathJax) with additional speech text (via ChromeVox). The tool will be designed integrate into HTML and epub3 production workflows to create a stop-gap for MathML.
 
 ## Deliverables
 
