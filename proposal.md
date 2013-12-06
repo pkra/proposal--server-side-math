@@ -1,14 +1,4 @@
-> Markdown guide https://github.com/fletcher/MultiMarkdown/blob/master/Documentation/Markdown%20Syntax.md
-
 # Project proposal: accessible math rendering in a JavaScript environment
-
-We propose a software system for rendering mathematical expressions in an
-annotated SVG format that will allow for browser independent fully scalable
-display of formulas on the web and their accessibility by any general screen
-reader via aural rendering of the annotations.  Our program will be written in
-Javascript, building on already existing technologies: The MathJax display
-engine for browser independent rendering of mathematics and the speech rule
-engine of the ChromeVox screen reading system.
 
 ## Background
 
@@ -34,7 +24,8 @@ This has some clear drawbacks in that
 1. content can only be made correctly available when viewd online, which is not
    useful for offline solutions such as eBook readers.
 
-In the case of MathML the polyfill solution is [MathJax](http://www.mathjax.org)
+In the case of MathML the polyfill solution is 
+[MathJax](http://www.mathjax.org),
 a JavaScript display engine that consistently renders mathematical expressions
 in all browsers. It handles a number of input formats and translates them into
 simple HTML markup that visually renders a math expression in a browser,
@@ -69,6 +60,25 @@ allow for dynamic reflow, which rules out simple rendering as images of a static
 size. Moreover, it has to contain a verbal description of the formula that can
 be picked up and aurally rendered by any screen reader.
 
+## Project Objective
+
+We propose a software system for rendering mathematical expressions in an
+annotated SVG format that will allow for browser independent, fully scalable
+display of formulas on the web and their accessibility by any general screen
+reader via aural rendering of the annotations.  Our program will be written in
+Javascript, building on already existing technologies: The MathJax display
+engine for browser independent rendering of mathematics and the speech rule
+engine of the ChromeVox screen reading system.
+
+## Consumers, Users, Beneficiaries
+
+* Content producers will be able to render MathML statically while retaining 
+accessibility
+* Users will find acccessible rendering of mathematical content without loosing 
+the ability to leverage MathML
+* In particular, we will collaborate with the Wikimedia Foundation so that the
+Media Wiki Math extension can use the proposed tool
+
 
 ## Project description
 
@@ -84,42 +94,68 @@ MathJax has provided cross-browser support for MathML for over 5
 years. ChromeVox allows voicing and exploration of MathML.
 
 [ChromeVox](http://www.chromevox.com) is a screen reader that has been
-built with the aim of making rich web applications accessible to visually impaired
+built with the aim of making rich web applications accessible to visually 
+impaired
 users. ChromeVox runs inside the Chrome browser where it can be installed as an
 extension and it is the default screen reader for Chrome OS. Therefore, it uses
 exclusively the HTML document object model (DOM) to communicate with web
 applications without the need to use an accessibility API provided by the
 underlying operating system.
 
+## Timeline and Budget
 
+> Provide an estimated project timeline and budget
+
+### Plan of work
+
+The project would consist for three work packages
+
+* MathJax, 40h
+  * isolate MathJax's SVG output to run without a DOM
+  * add APIs to pass through em-size, ex-size, PPI, textwidth from DOM/HTML for 
+correct SVG generation
+* ChromeVox, 300h
+  * Isolating ChromeVox output to run without a DOM
+* Integration & QA, 80h
 
 ## Deliverables
 
 * a node.js application 
   * “plain” node.js -- no DOM simulation required
 * converting HTML5 to HTML5
-  * in extension: epub3 to epub3
-  * later iterations could be in the form of a webservice with individual book QA
-* so that each MathJax-compatible equation input is replaced by SVG rendering via MathJax
-* and each such SVG-equation gets an embedded aria-label with speech-text via ChromeVox
-  * A future iteration could label subexpressions.
+  * in later iterations: epub3 to epub3
+  * in later iterations: a webservice with individual book QA
+* so that each MathJax-compatible equation input  (MathML, TeX, Asciimath) is 
+replaced by SVG rendering via MathJax
+* and each such SVG-equation gets an embedded aria-label with speech-text via 
+ChromeVox
+  * In later iterations: label subexpressions.
+  * in later iterations: move towards upcoming accessible SVG features
 * A QA suite for testing (possibly derived from the MathJax test suite)
 * A road map for future projects
 
+## Resources
 
-## Plan of work
+* Development
+    * David Cervone
+    * Volker Sorge
+* Project management
+    * Peter Krautzberger
 
-The project would consist for three work packages
+We do not expect costs beyond personnel costs.
 
-* MathJax, 40h
-  * enable MathJax's SVG output to run without the DOM
-  * add APIs to pass through em-size, ex-size, PPI, textwidth from DOM/HTML for correct SVG generation
-* ChromeVox, 300h
-  * Isolating ChromeVox
-* Integration & QA, 80h
+## Acceptance Criteria
+
+> Only applies to software projects. Usually boilerplate statement about mutually agreed upon acceptance criteria. 
+
+## Constraints and Assumptions
+
+The project will be licensed under Apache License v2, cf. 
+https://www.apache.org/licenses/
+
+The development will be organized on github or similar public webservices.
 
 ## Risks 
 
-The risks for this project are only the availability of its lead developers, Davide and Volker.
-
-
+The risks for this project are only the availability of its lead developers, 
+Davide and Volker.
