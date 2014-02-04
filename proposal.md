@@ -222,7 +222,8 @@ standalone system, we will define an appropriate interface between the two and
 integrate them into a single workflow to transform mathematical expressions into
 annotated SVG images. To validate the effectiveness of the system and assure the
 quality of the results we will design a test suite, initially derived from the
-MathJax test suite. **Maybe mention ePub3 here?**
+MathJax test suite. The final combination will be able to process HTML5 
+documents and its design should allow an extension to process epub files.
 
 Furthermore, at the end of the project plan to deliver a road map for future
 extension of the system. This future work could involve
