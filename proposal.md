@@ -144,13 +144,22 @@ into page content and that exploits information from a page's DOM as well as
 from a browsers render tree to compute SVG structures. 
 
 * The main tasks to make it a server side application are therefore to isolate
-  MathJax's SVG output to run without a DOM **more details here**
+  MathJax's SVG output to run without a DOM.  Currently, the SVG output processor
+  converts the internal MathML representation into DOM elements within the page.
+  One approach would be to create a document fragment into which the SVG output
+  would be added, and then serialize that after it is complete.  This would
+  require only small changes to the core SVG output jax.  Alternatively, since
+  all element creation is done through a small set of functions, these could be
+  replaced by ones that produce a serialization of the output directly.
 
 * An important aspect of computing SVG representations is to gauge appropriate
-  sizes for the rendered page and text where the mathematical formula will be
-  embedded into. In order to obtain this information we need to add APIs to pass
-  through em-size, ex-size, PPI, textwidth from DOM/HTML for **more details
-  here**
+  sizes for the rendered page and text where the mathematical formula eventually
+  will be placed.  The SVG renderer needs to know the em-size and ex-size of the
+  surrounding font (in terms of pixels), and the width of the space available
+  for the mathematics.  The latter is needed to allow line-breaking to occur
+  properly, and to position equation numbers in the proper locations.  This
+  information will need to be provided to the SVG renderer since it normally
+  obtains these from the DOM.
 
 Contrary to MathJax, ChromeVox's speech rule engine depends less on information
 from DOM but can also work with alternative XML representation. Thus, decoupling
