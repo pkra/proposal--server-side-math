@@ -195,18 +195,12 @@ independent:
 * Combine the seperate engine parts from content and background scipts into one
   monolithic system.
 
-However, when doing these technical changes we want to avoid branching off the
-development of the speech rule engine in our project of the development trunk of
-ChromeVox. In other words, we want to ensure that both the ChromeVox project and
-our project will mutually benefit from further developments to the engine in
-either project. As a consequence we intend to spend some work on making sure
-that our technical changes are ring fenced, in the sense that we can still share
-the bulk of the code with ChromeVox proper and that we can wire our version of
-the engine into ChromeVox's build system.  ChromeVox already has adequate
-facilities that allow adaptation of the systems to be made for different
-platforms. We want to leverage those facilities in order to achieve the goal of
-being able to build our standalone rule engine directly from the ChromeVox
-trunk.
+We will transform the speech rule engine into a fully standalone system, making
+it independent of the ChromeVox build process, and instead implement a simple
+build system of our own. Eventually the aim is to re-gain compatibility of the
+new system with ChromeVox, so that any new developments on the engine can be
+pulled back into ChromeVox. However this will not be part of the initial
+project.
 
 
 As a final adaptation of the rule engine we will construct a dedicated rule set
@@ -223,15 +217,17 @@ useful for our project at this point, where we can only integrate text strings,
 but simply omitting the text to speech instructions will lead to ambiguous
 reading of formulae. Hence we will implement a bespoke rule set for our project
 based on the semantic interpretations and modelled more closely after the
-[MathSpeak](http://www.gh-mathspeak.com/examples/grammar-rules/) rules.
+[MathSpeak](http://www.gh-mathspeak.com/examples/grammar-rules/) rules.  Since
+the quality of the generated auditory descriptions will be crucial for the
+success of this project, we aim to particularly concentrate on that point.
 
 
-Finally, once both MathJax and Speech Rule Engine are have been transformed into
-standalone system, we will define an appropriate interface between the two and
+Finally, once both MathJax and Speech Rule Engine have been transformed into
+standalone systems, we will define an appropriate interface between the two and
 integrate them into a single workflow to transform mathematical expressions into
 annotated SVG images. To validate the effectiveness of the system and assure the
 quality of the results we will design a test suite, initially derived from the
-MathJax test suite. The final combination will be able to process HTML5 
+MathJax test suite. The final combination will be able to process HTML5
 documents and its design should allow an extension to process epub files.
 
 Furthermore, at the end of the project plan to deliver a road map for future
@@ -263,13 +259,11 @@ into single tasks.
   1. isolate MathJax's SVG output to run without a DOM
   * add APIs to pass through em-size, ex-size, PPI, textwidth from DOM/HTML for 
 correct SVG generation
-* Speech Rule Engine, 300h
-  1. Decouple the rule engine ChromeVox output to run without a DOM (37.5h)
-  * Combine engine into a monolithic system (75h)
-  * Extract the rule engine from peripheral ChromeVox functionality (37.5h)
-  * Rewire the ChromeVox build process to allow for speech rule engine and this
-  project. (75h)
-  * Implement the full set of MathSpeak rules (75h)
+* Speech Rule Engine, 160h
+  1. Decouple the rule engine ChromeVox output to run without a DOM (20h)
+  * Extract the rule engine from peripheral ChromeVox functionality (30h)
+  * Combine engine into a monolithic system (30h)
+  * Implement the full set of MathSpeak rules (80h)
 * Integration & QA, 80h
 
 ## Deliverables
