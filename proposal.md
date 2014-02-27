@@ -264,7 +264,7 @@ correct SVG generation
   * Extract the rule engine from peripheral ChromeVox functionality (30h)
   * Combine engine into a monolithic system (30h)
   * Implement the full set of MathSpeak rules (80h)
-* Integration & QA, 80h
+* Integration & QA, 40h
 
 ## Deliverables
 
