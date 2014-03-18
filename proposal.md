@@ -240,31 +240,31 @@ elements in order to label subexpressions,
 
 3. or including additional instructions for the HTML5 speech API.
 
-**Should we already mention those?**
-
 
 ### 
 
 
 ## Timeline and Budget
 
-> Provide an estimated project timeline and budget
 
 ### Plan of work
 
 The project is comprised of three work packages, which are in turn broken down
 into single tasks.
 
-1. MathJax, 40h
-  1. isolate MathJax's SVG output to run without a DOM
+1. MathJax, 40h (@70)
+  * isolate MathJax's SVG output to run without a DOM (20h)
   * add APIs to pass through em-size, ex-size, PPI, textwidth from DOM/HTML for 
-correct SVG generation
-* Speech Rule Engine, 160h
-  1. Decouple the rule engine ChromeVox output to run without a DOM (20h)
+correct SVG generation (20h)
+2. Speech Rule Engine, 160h (@87.5)
+  * Decouple the rule engine ChromeVox output to run without a DOM (20h)
   * Extract the rule engine from peripheral ChromeVox functionality (30h)
   * Combine engine into a monolithic system (30h)
   * Implement the full set of MathSpeak rules (80h)
-* Integration & QA, 40h
+3. Integration & QA, 40h (@70)
+
+ETA: 8 weeks.
+Budget: $19,600.
 
 ## Deliverables
 
@@ -279,7 +279,9 @@ replaced by SVG rendering via MathJax
 ChromeVox
   * In later iterations: label subexpressions.
   * in later iterations: move towards upcoming accessible SVG features
-* A QA suite for testing (possibly derived from the MathJax test suite)
+* optional SVG to PNG conversion
+  * providing a speech string in the alt-tag
+  * this will require on non-JavaScript libraries
 * A road map for future projects
 
 ## Resources
